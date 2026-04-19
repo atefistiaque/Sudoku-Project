@@ -1,0 +1,33 @@
+Program Overview
+I used the default solution provided in the project guidelines document and used row/column swapping to mess up the solution to create a new random solution.
+Data Structures
+The 2D array: I used a 2D array to store the game data board.
+ The Array and/or ArrayList: I used an ArrayList (3 times) in order to have a way to quickly store and remove possible valid digits and ensure that everything in a certain region/row/column was in the right place.
+
+
+Algorithm Design
+The main algorithm is decided by the method “backToTheFuture”. I choose two random numbers from 0-8 (inclusive) using Math.random(). Those two numbers point to either two rows, two columns, or one of the 9 minizones in the sudoku. I then choose between swapping rows or columns in the sudoku using Math.random() again, I run the swap and I check if the sudoku is valid using “checkValids()”. The checkValids() checks to see if the new solution is good by checking one of the swapped columns (or just a random column if columns weren’t swapped), one of the swapped rows (or just a row if rows weren’t swapped), and the minizone of the location of (a, b). Honestly I didn’t think checking valid solutions like this would work but it seems like it does so I’m happy. If we changed the solution 100 times then we return “true” and stop the algorithm before displaying our new solution. If we haven’t reached 100 then we return the backToTheFuture() function again until it hits 100.
+
+
+Methods
+main() just runs the program
+backToTheFuture() is my backtracking algorithm that decides what to do
+swapCols() swaps columns
+swapRows() swaps rows
+miniMidPoint() finds the middle of the minizone that the point is in
+checkValids() calls 3 other functions to check if the board is valid (honestly i think its like a 99.9999% chance that the board is valid, there’s probably  a few very rare moments where it’d break but this works fine)
+validsInCol() checks to see if the numbers in a column are correct (1 of each number from 1-9 inclusive)
+validsInRow() checks to see if the numbers in a row are correct (1 of each number from 1-9 inclusive)
+validsInMiniZone() checks to see if the numbers in a minizone are correct (1 of each number from 1-9)
+kill() is used for debugging to shut down the program immediately
+display() displays the grid
+
+
+Testing Plan
+I tested the program using System.exit(0) in my “kill()” method to shut down the program at certain points, and I used System.out.println() to see what the program was doing prior to the kill.
+Test Case 1: I used System.out.println() and printed out my i and j values because the miniMidPoints were related to validating the minizones and I kept getting error out of bounds, I then realized i replace the “--” with “++” after i copy pasted my code to save time because it’s basically the same line with like 3 changes.
+Test Case 2: kill() whenever gambles went to more than 300 (my original max number of changes) to see how the program would look and if it was taking more than 300 to randomize a WORKING solution
+Test Case 3: System.out.println() in the main “checkValids()” to see what data was being sent back and forth and if it was a working system
+
+Challenges and Solutions
+The biggest challenge I faced was figuring out how to efficiently change the sudoku, at first I went with what I call my “bombing board” strategy which bombs a 2x2 area where an error occurs (like 2 7s in one row, both 7s get bombed). I then prioritize putting the 7 in a different row and forcing the other 7 into the original row before rescrambling numbers. Then I stared at the project guidelines thinking “did Ms. Qiu surely left me a hint” and I figured out row swapping because I was playing with a rubix cube and went “oh wait.. What if…”.
