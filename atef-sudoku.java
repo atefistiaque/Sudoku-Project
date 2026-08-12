@@ -1,13 +1,6 @@
 import java.util.ArrayList;
 
-public class MyProgram { //// the gamegrid below, unless its like a one in a million chance, 
-                        ///will never generate. as it's used to generate new grids
-                        //// i figured out on april 11 what "shifting" and "reordering" in the rules meant
-                        ///// didnt apply it until now because my original program geninuely sucked (1-3 seconds per gen)
-                        ///// and i wanted to look cool with my "bombing board" strategy of generation
-                        ///// yet somehow my program right now is still slower than the other students
-                        //// it is currently april 18, i give up trying to make a program
-                        /// faster than the other students and will just submitt so i can hopefully get my points
+public class MyProgram { 
     public static int[][] gameGrid = new int[][] {{1, 2, 3, 4, 5, 6, 7, 8, 9},
                                                   {4, 5, 6, 7, 8, 9, 1, 2, 3},
                                                   {7, 8, 9, 1, 2, 3, 4, 5, 6},
